@@ -1,0 +1,6 @@
+.planet-visual {
+  background-image: url(./planet-generic.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 300px;
+}
