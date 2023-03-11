@@ -1,9 +1,15 @@
 import { useLocation } from 'react-router-dom';
-import { Center, Heading, Flex, Wrap, WrapItem } from '@chakra-ui/react';
+import {
+  Center,
+  Heading,
+  Flex,
+  // Spinner,
+} from '@chakra-ui/react';
 // import { Stack, HStack, VStack } from '@chakra-ui/react'
 // import { Flex,  } from '@chakra-ui/react'
 import './Planet.css';
 
+import Spinner from '../Spinner';
 import { usePlanet } from './planet-hooks';
 import { getPercentiles } from './planet-percentiles';
 import PlanetStats from './PlanetStats';
@@ -11,7 +17,9 @@ import { PlanetData, PlanetFilms, PlanetResidents } from './PlanetTable';
 import PlanetVisual from './PlanetVisual';
 
 const Unexpected = () => (
-  <div>Something unexpected happened. See console for details.</div>
+  <div className="planet-page">
+    <span>An error occurred. See console.</span>
+  </div>
 );
 
 export default function Planet() {
@@ -26,7 +34,11 @@ export default function Planet() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="planet-page">
+        <Spinner />
+      </div>
+    );
   }
 
   if (!planet) {

@@ -9,27 +9,52 @@ import {
 
 import { formatNumber } from '../formatting';
 
+function StatSingle({
+  label,
+  helpText,
+  value,
+  percentile,
+}: {
+  label: string;
+  helpText: string;
+  value: number;
+  percentile: number | string;
+}) {
+  return (
+    <Stat>
+      <StatLabel>{label}</StatLabel>
+      {typeof percentile === 'string' ? (
+        <StatHelpText>{percentile}</StatHelpText>
+      ) : (
+        <>
+          <StatNumber>{formatNumber(value)}</StatNumber>
+          <StatHelpText>
+            {percentile}% {helpText}
+          </StatHelpText>
+        </>
+      )}
+    </Stat>
+  );
+}
+
 export default function PlanetStats(props: any) {
   const { diameter, diameterPercentile, population, populationPercentile } =
     props;
 
   return (
     <StatGroup>
-      <Stat>
-        <StatLabel>Diameter</StatLabel>
-        <StatNumber>{formatNumber(diameter)}</StatNumber>
-        <StatHelpText>
-          {diameterPercentile}% compared to largest planet
-        </StatHelpText>
-      </Stat>
-
-      <Stat>
-        <StatLabel>Population</StatLabel>
-        <StatNumber>{formatNumber(population)}</StatNumber>
-        <StatHelpText>
-          {populationPercentile}% compared to most densely populated planet
-        </StatHelpText>
-      </Stat>
+      <StatSingle
+        label="Diameter"
+        helpText="compared to largest planet"
+        value={diameter}
+        percentile={diameterPercentile}
+      />
+      <StatSingle
+        label="Population"
+        helpText="compared to most densely populated planet"
+        value={population}
+        percentile={populationPercentile}
+      />
     </StatGroup>
   );
 }

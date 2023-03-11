@@ -1,0 +1,41 @@
+.planets-page .spinner {
+  min-height: 100px;
+}
+
+.planets-page h2,
+.planets-page h3 {
+  line-height: initial;
+}
+
+.planets-page .planets-wrapper {
+  flex-wrap: wrap;
+}
+
+.planets-page .planet-card {
+  /* width: 300px; */
+  min-height: 460px;
+}
+.planets-page .planet-card ul {
+  padding-top: 12px;
+  text-align: center;
+  /* color: yellow; */
+  line-height: 22px;
+  list-style-type: none;
+  max-width: 300px;
+}
+
+.planets-page .planet-card-content {
+  position: relative;
+  top: -167px;
+  line-height: initial;
+  margin-bottom: -56px;
+}
+
+/* .planets-page .planet-card-content ul {
+  padding-top: 12px;
+  text-align: center;
+  /* color: yellow; */
+/* line-height: 22px;
+  list-style-type: none;
+  max-width: 300px;
+} */

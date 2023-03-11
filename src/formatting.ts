@@ -9,3 +9,9 @@
 
 export const formatNumber = (num: number) =>
   new Intl.NumberFormat('en-US').format(num);
+
+export const kebabToWords = (str: string) =>
+  str.toLowerCase().replace('-', ' ');
+
+export const kebabCase = (str: string) =>
+  str.toLowerCase().replaceAll(' ', '-');

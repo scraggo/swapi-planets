@@ -1,3 +1,31 @@
-/* .App {
+nav {
   text-align: center;
-} */
+}
+
+nav a {
+  color: #f9bd0e;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  text-decoration: none;
+}
+nav a b {
+  font-size: 50px;
+}
+
+nav img {
+  display: inline-block;
+  height: 40px;
+}
+
+@media screen and (max-width: 445px) {
+  nav a b {
+    font-size: 36px;
+  }
+
+  nav img {
+    display: inline-block;
+    height: 30px;
+  }
+}

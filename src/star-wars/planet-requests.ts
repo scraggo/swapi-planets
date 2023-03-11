@@ -12,9 +12,9 @@ export const swapiGetPlanets = () => swapiGetAll(PLANET_ENDPOINT);
 const relationships = ['films', 'residents'];
 
 export const swapiGetPlanet = async (name: string) => {
-  return planetMock;
-  const { results } = await get(searchParams(PLANET_ENDPOINT, name));
+  // return planetMock;
   debugger;
+  const { results } = await get(searchParams(PLANET_ENDPOINT, name));
 
   if (results.length === 0) {
     throw new Error(`Didn't find planet: ${name}`);

@@ -32,7 +32,7 @@ const climateColorMap = {
   polluted: '#975A16', // yellow-700
   rocky: '#A0AEC0', // gray-400
   temperate: '#68D391', // green-300
-  tropical: '#48BB78;', // green-400
+  tropical: '#38A169', // green-500
 };
 
 export default function PlanetVisual({ climate }: Props) {

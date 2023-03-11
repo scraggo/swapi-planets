@@ -1,13 +1,14 @@
 export const planetMock = {
-  name: 'Tatooine',
+  name: 'Tatooine IV',
   rotation_period: '23',
   orbital_period: '304',
   diameter: '10465',
-  climate: 'arid, superheated',
+  climate: 'temperate, tropical',
   gravity: '1 standard',
   terrain: 'desert',
   surface_water: '1',
-  population: '200000',
+  population: 'unknown',
+  // population: '200000',
   residents: [
     {
       name: 'Luke Skywalker',

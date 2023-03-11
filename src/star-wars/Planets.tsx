@@ -1,39 +1,63 @@
 import { Link } from 'react-router-dom';
+import {
+  Card,
+  CardBody,
+  Center,
+  Heading,
+  Flex,
+  Text,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react';
+
+import Spinner from '../Spinner';
 import { usePlanets } from './planet-hooks';
+import PlanetCard from './PlanetCard';
+
+import './Planets.css';
+
+const Unexpected = () => (
+  <div className="planet-page">
+    <span>An error occurred. See console.</span>
+  </div>
+);
 
 export default function Planets() {
   const { data: planets, error, isLoading } = usePlanets();
 
   if (error) {
     console.error(error);
-    return <div>There was an error fetching. See console for details.</div>;
+    return <Unexpected />;
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="planet-page">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (!planets) {
+    return <Unexpected />;
   }
 
   if (planets) {
     debugger;
   }
-  return (
-    <div>
-      {planets ? <span> There are {planets.length} planet(s).</span> : null}
 
-      {planets
-        ? planets.slice(0, 4)?.map((planet: any) => {
-            debugger;
-            return (
-              <div key={planet.name}>
-                {JSON.stringify(planet.value)}
-                <Link to={`/planets/${planet.name.toLowerCase()}`}>
-                  {planet.name}
-                </Link>
-                <hr />
-              </div>
-            );
-          })
-        : null}
+  return (
+    <div className="planets-page">
+      <Text size="xs" textAlign="center">
+        {planets.length} planets found.
+      </Text>
+
+      <Center className="planets-wrapper">
+        {planets.map((planet: any) => {
+          const { name, population, climate } = planet;
+          return <PlanetCard key={name} planet={planet} />;
+        })}
+      </Center>
     </div>
   );
 }

@@ -6,6 +6,11 @@
 .planet-page h2 {
   position: relative;
   top: 180px;
+  line-height: initial;
+}
+
+.planet-page .spinner {
+  min-height: 200px;
 }
 
 .planet-main-info {
