@@ -1,0 +1,27 @@
+/* .planet-page {
+  flex-direction: column;
+  text-align: left;
+} */
+
+.planet-page h2 {
+  position: relative;
+  top: 180px;
+}
+
+.planet-main-info {
+  margin: 0 auto;
+}
+
+.planet-secondary-info {
+  padding-top: 50px;
+  min-width: 300px;
+  margin: 0 auto;
+}
+
+.planet-visual {
+  background-image: url(./planet-generic.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 300px;
+  margin: 0 auto;
+}

@@ -8,9 +8,7 @@ export default function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to="/">
-              <header className="App-header">The Planets of Star Wars</header>
-            </Link>
+            <Link to="/">The Planets of Star Wars</Link>
           </li>
         </ul>
       </nav>

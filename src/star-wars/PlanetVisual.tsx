@@ -1,5 +1,5 @@
 import { PieChart } from 'react-minimal-pie-chart';
-import './PlanetVisual.css';
+
 /*
 storiesOf('Donut Chart', module)
   .add("Custom arcs' width", () => <PieChart data={dataMock} lineWidth={15} />)
