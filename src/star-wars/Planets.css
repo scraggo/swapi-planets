@@ -12,13 +12,12 @@
 }
 
 .planets-page .planet-card {
-  /* width: 300px; */
   min-height: 460px;
 }
+
 .planets-page .planet-card ul {
   padding-top: 12px;
   text-align: center;
-  /* color: yellow; */
   line-height: 22px;
   list-style-type: none;
   max-width: 300px;
@@ -30,12 +29,3 @@
   line-height: initial;
   margin-bottom: -56px;
 }
-
-/* .planets-page .planet-card-content ul {
-  padding-top: 12px;
-  text-align: center;
-  /* color: yellow; */
-/* line-height: 22px;
-  list-style-type: none;
-  max-width: 300px;
-} */

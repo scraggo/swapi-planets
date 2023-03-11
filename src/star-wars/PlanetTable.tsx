@@ -1,10 +1,8 @@
 import {
-  // ExternalLinkIcon,
   Link,
   Table,
   Thead,
   Tbody,
-  // Tfoot,
   Tr,
   Th,
   Td,
@@ -12,7 +10,9 @@ import {
   TableContainer,
 } from '@chakra-ui/react';
 
-const keys = [
+import { IFilm, IPeople, IPlanet } from './types';
+
+const keys: Array<keyof IPlanet> = [
   'rotation_period',
   'orbital_period',
   // 'diameter',
@@ -23,20 +23,7 @@ const keys = [
   // 'population',
 ];
 
-export function PlanetData(props: any) {
-  // const {
-  //   rotation_period,
-  //   orbital_period,
-  //   // diameter,
-  //   // diameterPercentile,
-  //   climate,
-  //   gravity,
-  //   terrain,
-  //   surface_water,
-  //   // population,
-  //   // populationPercentile,
-  // } = props;
-
+export function PlanetData(props: IPlanet) {
   return (
     <TableContainer>
       <Table variant="simple" size="sm">
@@ -55,7 +42,7 @@ export function PlanetData(props: any) {
                 <Td textAlign="right" width={42}>
                   {key.replace('_', ' ')}:
                 </Td>
-                <Td>{props[key]}</Td>
+                <Td>{String(props[key])}</Td>
               </Tr>
             );
           })}
@@ -65,7 +52,7 @@ export function PlanetData(props: any) {
   );
 }
 
-export function PlanetFilms(props: any) {
+export function PlanetFilms(props: { films: IFilm[]; name: IPlanet['name'] }) {
   const { films, name } = props;
 
   return (
@@ -83,7 +70,7 @@ export function PlanetFilms(props: any) {
           </Tr>
         </Thead>
         <Tbody>
-          {films.map((film: any) => {
+          {films.map((film) => {
             const { title, director, producer, release_date, url } = film;
 
             return (
@@ -93,7 +80,7 @@ export function PlanetFilms(props: any) {
                     {title}
                   </Link>
                 </Td>
-                <Td>{release_date}</Td>
+                <Td>{String(release_date)}</Td>
                 <Td>{director}</Td>
                 <Td>{producer}</Td>
               </Tr>
@@ -105,7 +92,10 @@ export function PlanetFilms(props: any) {
   );
 }
 
-export function PlanetResidents(props: any) {
+export function PlanetResidents(props: {
+  residents: IPeople[];
+  name: IPlanet['name'];
+}) {
   const { name, residents } = props;
 
   return (
@@ -128,7 +118,7 @@ export function PlanetResidents(props: any) {
           </Tr>
         </Thead>
         <Tbody>
-          {residents.map((resident: any) => {
+          {residents.map((resident) => {
             const {
               name: residentName,
               height,
@@ -141,6 +131,8 @@ export function PlanetResidents(props: any) {
               homeworld,
               url,
             } = resident;
+
+            const homeworldDisplay = homeworld as string;
 
             return (
               <Tr key={url}>
@@ -157,8 +149,8 @@ export function PlanetResidents(props: any) {
                 <Td>{birth_year}</Td>
                 <Td>{gender}</Td>
                 <Td>
-                  <Link href={homeworld} isExternal>
-                    {homeworld}
+                  <Link href={homeworldDisplay} isExternal>
+                    {homeworldDisplay}
                   </Link>
                 </Td>
               </Tr>

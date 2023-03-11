@@ -1,4 +1,3 @@
-// import React from 'react';
 import { Container, extendTheme, ChakraProvider } from '@chakra-ui/react';
 import './App.css';
 import Routes from './Routes';

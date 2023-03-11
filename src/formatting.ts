@@ -1,11 +1,15 @@
-// export const titlecase = (str: string) => {
-//   const firstUpper = str[0].toUpperCase();
-//   const lower = str.slice(1).toLowerCase();
-//   return `${firstUpper}${lower}`;
-// };
+import numeral from 'numeral';
 
-// console.assert(titlecase('hello') === 'Hello');
-// console.assert(titlecase('heLLo') === 'Hello');
+// 1230974	'0.0a'	1.2m
+export const formatLargeNum = (num: string | number) => {
+  if (Number.isNaN(num)) {
+    return num;
+  }
+  return numeral(num).format('0.0a');
+};
+
+// 20.1234	'0.00'	20.123
+export const formatPercentile = (num: number) => numeral(num).format('0.00');
 
 export const formatNumber = (num: number) =>
   new Intl.NumberFormat('en-US').format(num);

@@ -1,14 +1,4 @@
-import { Link } from 'react-router-dom';
-import {
-  Card,
-  CardBody,
-  Center,
-  Heading,
-  Flex,
-  Text,
-  Wrap,
-  WrapItem,
-} from '@chakra-ui/react';
+import { Center, Text } from '@chakra-ui/react';
 
 import Spinner from '../Spinner';
 import { usePlanets } from './planet-hooks';
@@ -42,10 +32,6 @@ export default function Planets() {
     return <Unexpected />;
   }
 
-  if (planets) {
-    debugger;
-  }
-
   return (
     <div className="planets-page">
       <Text size="xs" textAlign="center">
@@ -53,9 +39,8 @@ export default function Planets() {
       </Text>
 
       <Center className="planets-wrapper">
-        {planets.map((planet: any) => {
-          const { name, population, climate } = planet;
-          return <PlanetCard key={name} planet={planet} />;
+        {planets.map((planet) => {
+          return <PlanetCard key={planet.name} planet={planet} />;
         })}
       </Center>
     </div>

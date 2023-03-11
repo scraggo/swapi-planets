@@ -5,15 +5,17 @@ import {
   searchParams,
   swapiGetAll,
 } from './swapi-requests';
-import { planetMock } from './planet-mock';
+import { IPlanet } from './types';
+// import { planetMock } from './planet-mock';
 
-export const swapiGetPlanets = () => swapiGetAll(PLANET_ENDPOINT);
+export const swapiGetPlanets = (): Promise<IPlanet[]> =>
+  swapiGetAll(PLANET_ENDPOINT);
 
 const relationships = ['films', 'residents'];
 
-export const swapiGetPlanet = async (name: string) => {
+export const swapiGetPlanet = async (name: string): Promise<IPlanet> => {
   // return planetMock;
-  debugger;
+  // debugger;
   const { results } = await get(searchParams(PLANET_ENDPOINT, name));
 
   if (results.length === 0) {

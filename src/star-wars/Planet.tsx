@@ -1,13 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import {
-  Center,
-  Heading,
-  Flex,
-  // Spinner,
-} from '@chakra-ui/react';
-// import { Stack, HStack, VStack } from '@chakra-ui/react'
-// import { Flex,  } from '@chakra-ui/react'
-import './Planet.css';
+import { Center, Heading, Flex, Link } from '@chakra-ui/react';
 
 import Spinner from '../Spinner';
 import { usePlanet } from './planet-hooks';
@@ -15,6 +7,9 @@ import { getPercentiles } from './planet-percentiles';
 import PlanetStats from './PlanetStats';
 import { PlanetData, PlanetFilms, PlanetResidents } from './PlanetTable';
 import PlanetVisual from './PlanetVisual';
+import { IFilm, IPeople } from './types';
+
+import './Planet.css';
 
 const Unexpected = () => (
   <div className="planet-page">
@@ -45,11 +40,7 @@ export default function Planet() {
     return <Unexpected />;
   }
 
-  if (planet) {
-    debugger;
-  }
-
-  const { climate, diameter, name, films, population, residents } = planet;
+  const { climate, diameter, name, films, population, residents, url } = planet;
   const { diameter: diameterPercentile, population: populationPercentile } =
     getPercentiles(diameter, population);
 
@@ -68,6 +59,17 @@ export default function Planet() {
             </Heading>
             <div>
               <PlanetVisual climate={climate} />
+              <Link
+                color="gray.300"
+                display="block"
+                fontSize="x-small"
+                href={url}
+                isExternal
+                marginTop={4}
+                textAlign="center"
+              >
+                View in SWAPI
+              </Link>
             </div>
           </div>
           <div className="planet-secondary-info">
@@ -79,14 +81,14 @@ export default function Planet() {
             />
             <PlanetData
               {...planet}
-              diameterPercentile={diameterPercentile}
-              populationPercentile={populationPercentile}
+              // diameterPercentile={diameterPercentile}
+              // populationPercentile={populationPercentile}
             />
           </div>
         </Flex>
       </Center>
-      <PlanetFilms films={films} name={name} />
-      <PlanetResidents residents={residents} name={name} />
+      <PlanetFilms films={films as IFilm[]} name={name} />
+      <PlanetResidents residents={residents as IPeople[]} name={name} />
     </div>
   );
 }

@@ -1,19 +1,6 @@
 import { PieChart } from 'react-minimal-pie-chart';
 
-/*
-storiesOf('Donut Chart', module)
-  .add("Custom arcs' width", () => <PieChart data={dataMock} lineWidth={15} />)
-  .add('Rounded arcs', () => (
-    <PieChart data={dataMock} lineWidth={15} rounded />
-  ))
-  .add('Padded arcs', () => (
-    <PieChart data={dataMock} lineWidth={15} paddingAngle={5} />
-  ));
-*/
-
-type Props = {
-  climate: keyof typeof climateColorMap;
-};
+type Climate = keyof typeof climateColorMap;
 
 const climateColorMap = {
   'artificial temperate': '#805AD5', // purple-500
@@ -35,12 +22,12 @@ const climateColorMap = {
   tropical: '#38A169', // green-500
 };
 
-export default function PlanetVisual({ climate }: Props) {
+export default function PlanetVisual({ climate }: { climate: string }) {
   const climates = climate.split(', ');
   const data = climates.map((c) => ({
     title: c,
     value: 1,
-    color: climateColorMap[c.trim() as Props['climate']],
+    color: climateColorMap[c.trim() as Climate],
   }));
   return (
     <div className="planet-visual">

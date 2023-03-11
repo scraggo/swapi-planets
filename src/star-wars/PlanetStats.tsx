@@ -3,11 +3,10 @@ import {
   StatLabel,
   StatNumber,
   StatHelpText,
-  // StatArrow,
   StatGroup,
 } from '@chakra-ui/react';
 
-import { formatNumber } from '../formatting';
+import { formatLargeNum } from '../formatting';
 
 function StatSingle({
   label,
@@ -18,16 +17,16 @@ function StatSingle({
   label: string;
   helpText: string;
   value: number;
-  percentile: number | string;
+  percentile: null | string;
 }) {
   return (
     <Stat>
       <StatLabel>{label}</StatLabel>
-      {typeof percentile === 'string' ? (
-        <StatHelpText>{percentile}</StatHelpText>
+      {percentile === null ? (
+        <StatHelpText>{value}</StatHelpText>
       ) : (
         <>
-          <StatNumber>{formatNumber(value)}</StatNumber>
+          <StatNumber>{formatLargeNum(value)}</StatNumber>
           <StatHelpText>
             {percentile}% {helpText}
           </StatHelpText>

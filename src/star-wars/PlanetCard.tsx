@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Heading, LinkBox, LinkOverlay } from '@chakra-ui/react';
 
-import { kebabCase } from '../formatting';
+import { formatLargeNum, kebabCase } from '../formatting';
 import PlanetVisual from './PlanetVisual';
+import { IPlanet } from './types';
 
 const getPlanetLink = (name: string) => `/planets/${kebabCase(name)}`;
 
-export default function PlanetCard({ planet }: any) {
+export default function PlanetCard({ planet }: { planet: IPlanet }) {
   const { name, population, climate, terrain } = planet;
-  debugger;
+
   return (
-    // <div className="planet-card" key={name}>
     <LinkBox
       as="article"
       p="5"
@@ -31,10 +31,9 @@ export default function PlanetCard({ planet }: any) {
       </div>
       <ul>
         <li>Climate: {climate}</li>
-        <li>Population: {population}</li>
+        <li>Population: {formatLargeNum(population)}</li>
         <li>Terrain: {terrain}</li>
       </ul>
     </LinkBox>
-    // </div>
   );
 }
