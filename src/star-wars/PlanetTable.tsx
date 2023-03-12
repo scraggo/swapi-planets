@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 
 import { IFilm, IPeople, IPlanet } from './types';
+import { pluralText } from '../formatting';
 
 const keys: Array<keyof IPlanet> = [
   'rotation_period',
@@ -57,18 +58,15 @@ export function PlanetFilms(props: { films: IFilm[]; name: IPlanet['name'] }) {
   const { films, name } = props;
 
   if (films.length === 0) {
-    return (
-      <Text paddingLeft={4} paddingBottom={4}>
-        No films to show.
-      </Text>
-    );
+    return <Text padding={4}>No films to show.</Text>;
   }
 
   return (
     <TableContainer>
       <Table variant="unstyled" size="sm">
         <TableCaption fontSize="md" textAlign="left" placement="top">
-          {name} appears in {films.length} films:
+          {name} appears in {films.length}{' '}
+          {pluralText(films.length, 'film', 'films')}:
         </TableCaption>
         <Thead>
           <Tr>
@@ -108,18 +106,15 @@ export function PlanetResidents(props: {
   const { name, residents } = props;
 
   if (residents.length === 0) {
-    return (
-      <Text paddingLeft={4} paddingBottom={4}>
-        No residents to show.
-      </Text>
-    );
+    return <Text padding={4}>No residents to show.</Text>;
   }
 
   return (
     <TableContainer>
       <Table variant="unstyled" size="sm">
         <TableCaption fontSize="md" textAlign="left" placement="top">
-          There are {residents.length} residents of {name}:
+          {name} has {residents.length}{' '}
+          {pluralText(residents.length, 'resident', 'residents')}:
         </TableCaption>
         <Thead>
           <Tr>

@@ -19,3 +19,6 @@ export const kebabToWords = (str: string) =>
 
 export const kebabCase = (str: string) =>
   str.toLowerCase().replaceAll(' ', '-');
+
+export const pluralText = (num: number, singular: string, plural: string) =>
+  num === 1 ? singular : plural;
