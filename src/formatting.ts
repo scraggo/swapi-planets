@@ -2,17 +2,17 @@ import numeral from 'numeral';
 
 // 1230974	'0.0a'	1.2m
 export const formatLargeNum = (num: string | number) => {
-  if (Number.isNaN(num)) {
+  if (Number.isNaN(Number(num))) {
     return num;
   }
-  return numeral(num).format('0.0a');
+  return numeral(num).format('0.0a').replace('.0', '');
 };
 
 // 20.1234	'0.00'	20.123
-export const formatPercentile = (num: number) => numeral(num).format('0.00');
-
-export const formatNumber = (num: number) =>
-  new Intl.NumberFormat('en-US').format(num);
+export const formatPercentile = (num: number) => {
+  const format = num < 1 ? '.00' : '0.00';
+  return numeral(num).format(format);
+};
 
 export const kebabToWords = (str: string) =>
   str.toLowerCase().replace('-', ' ');

@@ -21,9 +21,15 @@ nav img {
   margin: -2px 0;
 }
 
+@media screen and (max-width: 765px) {
+  nav a b {
+    display: block;
+  }
+}
+
 @media screen and (max-width: 445px) {
   nav a b {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   nav img {

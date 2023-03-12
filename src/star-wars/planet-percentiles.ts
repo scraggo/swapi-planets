@@ -10,7 +10,7 @@ const roundIfNumber = (str: string, max: number) => {
     return null;
   }
 
-  if (numValue / max < 0.00009) {
+  if (numValue / max < 0.0001) {
     return '0';
   }
 
