@@ -6,9 +6,15 @@ export const maxDiameter = 118000;
 const roundIfNumber = (str: string, max: number) => {
   const numValue = Number(str);
 
-  return Number.isNaN(numValue)
-    ? null
-    : formatPercentile((numValue / max) * 100);
+  if (Number.isNaN(numValue)) {
+    return null;
+  }
+
+  if (numValue / max < 0.00009) {
+    return '0';
+  }
+
+  return formatPercentile((numValue / max) * 100);
 };
 
 export const getPercentiles = (diameter: string, population: string) => {

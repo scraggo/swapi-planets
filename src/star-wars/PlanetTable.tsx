@@ -8,6 +8,7 @@ import {
   Td,
   TableCaption,
   TableContainer,
+  Text,
 } from '@chakra-ui/react';
 
 import { IFilm, IPeople, IPlanet } from './types';
@@ -55,6 +56,14 @@ export function PlanetData(props: IPlanet) {
 export function PlanetFilms(props: { films: IFilm[]; name: IPlanet['name'] }) {
   const { films, name } = props;
 
+  if (films.length === 0) {
+    return (
+      <Text paddingLeft={4} paddingBottom={4}>
+        No films to show.
+      </Text>
+    );
+  }
+
   return (
     <TableContainer>
       <Table variant="unstyled" size="sm">
@@ -97,6 +106,14 @@ export function PlanetResidents(props: {
   name: IPlanet['name'];
 }) {
   const { name, residents } = props;
+
+  if (residents.length === 0) {
+    return (
+      <Text paddingLeft={4} paddingBottom={4}>
+        No residents to show.
+      </Text>
+    );
+  }
 
   return (
     <TableContainer>

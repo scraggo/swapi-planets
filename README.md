@@ -38,6 +38,7 @@ A bit on the codebase:
 - I chose not to use the SWAPI JS/TS wrappers. I used `axios` to call the API directly. I tried `swapi-ts` because it had types, but I kept getting random errors and it didn't make what I was trying to do easy. These wrappers weren't up-to-snuff anyways - no unit tests and bad docs.
 - ChakraUI - I used this challenge as an excuse to use this library. There were some definite surprises with it, but it made certain things easier.
 - I wanted to spend more time designing and styling the app. There can always be more touches added!
+  - Notably: number format and long name improvements
 
 ## Running the app
 
