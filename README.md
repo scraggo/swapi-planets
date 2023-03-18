@@ -21,7 +21,7 @@ The considerations and features I added to the requirements were:
   - Relatedly, I created utils and used a library to format numbers so they're condensed and readable. Numbers like `1000000000000` are unpleasant to read and create unpredictable DOM element widths.
 - To speed things up and avoid needless API calls:
   - Each API request is cached with `swr`. I used the `immutable` setting because it's highly unlikely that new Star Wars data would be added before a user reloaded or re-visited the page. (This is easily changed by tweaking the cache settings.)
-  - The relationships data is loaded on-demand. If I were to request the films and residents for each planet on homepage load, it would take `NumberOfPlanets * (NumberOfFilms + NumberOfResidents)` time instead of simply `NumberOfPlanets` time. There are 60 planets, and guesstimated average of 4 relationships, which I didn't needlessly lazy-load.
+  - The relationships data is loaded on-demand. If I were to request the films and residents for each planet on homepage load, it would take `NumberOfPlanets * (NumberOfFilms + NumberOfResidents)` time instead of simply `NumberOfPlanets` time. There are 60 planets, and guesstimated average of 4 relationships, which I didn't needlessly eager-load.
 - The color scheme is heavily Star Wars. The `nav` colors are Star Wars yellow, the background is black, the foreground is white to give you a feeling of being in space.
 - I added a header logo that can always navigate to the homepage.
 - I added a spinner while requests were loading.
